@@ -4,6 +4,8 @@ import Home from "../pages/Home/Home";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Login from '../pages/Login/Login';
 import SignUp from "../pages/SignUp/SignUp";
+import UserProfile from "../pages/UserProfile/UserProfile";
+import UpdateProfile from "../pages/UpdateProfile/UpdateProfile";
 
 const router = createBrowserRouter([
     {
@@ -22,6 +24,14 @@ const router = createBrowserRouter([
             {
                 path: "/signUp",
                 element: <SignUp></SignUp>,
+            },
+            {
+                path: "/userprofile",
+                element: <UserProfile></UserProfile>,
+            },
+            {
+                path: "/update",
+                element: <UpdateProfile></UpdateProfile>,
             }
 
         ]

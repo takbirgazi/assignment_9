@@ -16,5 +16,6 @@
 
 **Name Of NPM package**
 
-* Firebase
+* react-helmet
 * Swiper slider
+* Firebase

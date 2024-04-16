@@ -1,11 +1,10 @@
-import Navbar from "../Navbar/Navbar";
-
+import { Link } from "react-router-dom";
 
 const ErrorPage = () => {
     return (
-        <div>
-            <Navbar></Navbar>
-            <h2>This is ERROR page</h2>
+        <div className="flex items-center justify-center flex-col gap-5 min-h-screen">
+            <h2 className="font-bold text-2xl">404 | Page Not Found</h2>
+            <Link to="/" className="px-4 py-2 rounded-md bg-blue-500 text-white">Back to Home</Link>
         </div>
     );
 };
