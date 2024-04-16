@@ -1,6 +1,6 @@
 # Five Star
 
-**Live Preview** [Click Here...](https://takbirgazi.github.io/it_polly/)
+**Live Preview** [Click Here...](https://assignment9-6a740.web.app/)
 
 
 **Features Of My Website**
