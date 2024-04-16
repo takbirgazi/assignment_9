@@ -3,6 +3,8 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import auth from "../../firebase/firebase.config";
 import { useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const SignUp = () => {
@@ -25,9 +27,11 @@ const SignUp = () => {
             const url = result.user.photoURL=photoUrl;
             console.log(url);
             setSuccMsg("Account Created Successfully!");
+            toast("Account Created Successfully!");
         })
         .catch(err =>{
             setErrMsg(err.message);
+            toast(err.message);
         })
     }
 
@@ -66,6 +70,7 @@ const SignUp = () => {
                     </form>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 };

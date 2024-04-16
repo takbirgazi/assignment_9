@@ -1,7 +1,37 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
+import { GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
+import {signInWithPopup} from "firebase/auth";
+import auth from "../../firebase/firebase.config";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
+    
+    const providerGoogle = new GoogleAuthProvider();
+    const providerFb = new FacebookAuthProvider();
+    
+    const signInWithGoogleHandler =()=>{
+        signInWithPopup(auth,providerGoogle)
+        .then(res=>{
+            console.log(res);
+            toast("Log In Successfully!");
+        })
+        .catch(err=>{
+            console.error(err.message);
+            toast(err.message);
+        })
+    }
+    const siggnInWithFb = ()=>{
+        signInWithPopup(auth, providerFb)
+        .then(res=>{
+            console.log(res)
+        })
+        .catch(err=>{
+            console.error(err.message);
+            toast(err.message);
+        })
+    }
     return (
         <div>
             <Helmet>
@@ -27,11 +57,12 @@ const Login = () => {
                         <div className="divider divider-info">OR</div>
                     </form>
                     <div className="flex gap-5 flex-col pb-10 items-center">
-                        <button className="border bg-blue-800 text-white rounded-sm p-2 lg:w-1/2 w-full mx-auto text-center">Log In With Google</button>
-                        <button className="border bg-blue-800 text-white rounded-sm p-2 lg:w-1/2 w-full mx-auto text-center">Log In With Facebook</button>
+                        <button onClick={signInWithGoogleHandler} className="border bg-blue-800 text-white rounded-sm p-2 lg:w-1/2 w-full mx-auto text-center">Log In With Google</button>
+                        <button onClick={siggnInWithFb} className="border bg-blue-800 text-white rounded-sm p-2 lg:w-1/2 w-full mx-auto text-center">Log In With Facebook</button>
                     </div>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 };

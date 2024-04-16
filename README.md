@@ -17,5 +17,6 @@
 **Name Of NPM package**
 
 * react-helmet
+* react-toastify
 * Swiper slider
 * Firebase
