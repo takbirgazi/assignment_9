@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import { GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
+import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 import {signInWithPopup} from "firebase/auth";
 import auth from "../../firebase/firebase.config";
 import { ToastContainer, toast } from 'react-toastify';
@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const Login = () => {
     
     const providerGoogle = new GoogleAuthProvider();
-    const providerFb = new FacebookAuthProvider();
+    const providerGit = new GithubAuthProvider();
     
     const signInWithGoogleHandler =()=>{
         signInWithPopup(auth,providerGoogle)
@@ -23,7 +23,7 @@ const Login = () => {
         })
     }
     const siggnInWithFb = ()=>{
-        signInWithPopup(auth, providerFb)
+        signInWithPopup(auth, providerGit)
         .then(res=>{
             console.log(res)
         })
@@ -52,13 +52,13 @@ const Login = () => {
                         </div>
 
                         <div className="flex items-center justify-center">
-                        <p>If you want to create an account <Link className="text-red-500" to="/signUp">Sing Up</Link></p>
+                        <p>If you want to create an account <Link className="text-red-500" to="/signUp">Register</Link></p>
                         </div>
                         <div className="divider divider-info">OR</div>
                     </form>
                     <div className="flex gap-5 flex-col pb-10 items-center">
                         <button onClick={signInWithGoogleHandler} className="border bg-blue-800 text-white rounded-sm p-2 lg:w-1/2 w-full mx-auto text-center">Log In With Google</button>
-                        <button onClick={siggnInWithFb} className="border bg-blue-800 text-white rounded-sm p-2 lg:w-1/2 w-full mx-auto text-center">Log In With Facebook</button>
+                        <button onClick={siggnInWithFb} className="border bg-blue-800 text-white rounded-sm p-2 lg:w-1/2 w-full mx-auto text-center">Log In With GitHub</button>
                     </div>
                 </div>
             </div>

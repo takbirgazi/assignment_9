@@ -14,9 +14,14 @@
 
 * Engaging Content and Customer Testimonials: Visitors are greeted with captivating content, including captivating descriptions of local attractions, upcoming events, and insider tips, enhancing their anticipation of a memorable stay. Additionally, authentic customer testimonials and reviews provide social proof of our exceptional service and hospitality, instilling confidence in potential guests.
 
+
 **Name Of NPM package**
 
 * react-helmet
 * react-toastify
+* react-icons
+
+
+**Name Of Implement Packages**
+
 * Swiper slider
-* Firebase
