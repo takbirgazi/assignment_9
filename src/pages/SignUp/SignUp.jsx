@@ -1,15 +1,16 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import auth from "../../firebase/firebase.config";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FaRegEye, FaEyeSlash } from "react-icons/fa";
+import { AuthContext } from "../../providers/AuthProvider";
 
 
 
 const SignUp = () => {
+    const {createUser} = useContext(AuthContext)
     const [errMsg, setErrMsg] = useState("");
     const [succMsg, setSuccMsg] = useState("");
     const [showPwd, setShowPwd] = useState(false);
@@ -29,7 +30,7 @@ const SignUp = () => {
             return;
         }
 
-        createUserWithEmailAndPassword(auth, email, password)
+        createUser(email, password)
         .then(result =>{
             result.user.photoURL=photoUrl;
             // console.log(result.user);

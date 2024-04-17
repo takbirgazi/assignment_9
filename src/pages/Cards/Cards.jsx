@@ -6,7 +6,7 @@ const Cards = () => {
     const cards = useLoaderData();
     console.log(cards);
     return (
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid md:grid-cols-2 grid-cols-1 gap-5">
             {cards.map(card => <SingleCard cardInfo={card} key={card.id}></SingleCard>)}
         </div>
     );

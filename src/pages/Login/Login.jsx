@@ -1,16 +1,18 @@
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
-import { GoogleAuthProvider, GithubAuthProvider, signInWithEmailAndPassword} from "firebase/auth";
+import { Link, useNavigate } from "react-router-dom";
+import { GoogleAuthProvider, GithubAuthProvider} from "firebase/auth";
 import {signInWithPopup} from "firebase/auth";
 import auth from "../../firebase/firebase.config";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import 'react-toastify/dist/ReactToastify.css';
 import { FaRegEye, FaEyeSlash } from "react-icons/fa";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Login = () => {
-    
+    const {logIn} = useContext(AuthContext);
+    const navigate = useNavigate()
     const providerGoogle = new GoogleAuthProvider();
     const providerGit = new GithubAuthProvider();
     const [showPwd, setShowPwd] = useState(false);
@@ -21,9 +23,9 @@ const Login = () => {
     
     const signInWithGoogleHandler =()=>{
         signInWithPopup(auth,providerGoogle)
-        .then(res=>{
-            console.log(res);
+        .then(()=>{
             toast("Log In Successfully!");
+            navigate("/");navigate("/");
         })
         .catch(err=>{
             console.error(err.message);
@@ -32,8 +34,9 @@ const Login = () => {
     }
     const siggnInWithFb = ()=>{
         signInWithPopup(auth, providerGit)
-        .then(res=>{
-            console.log(res)
+        .then(()=>{
+            toast("Log In Successfully!");
+            navigate("/");
         })
         .catch(err=>{
             console.error(err.message);
@@ -45,12 +48,12 @@ const Login = () => {
         event.preventDefault();
         const email = event.target.email.value;
         const pwd = event.target.password.value;
-        signInWithEmailAndPassword(auth, email,pwd)
-        .then(res =>{
-            console.log(res);
+        logIn(email,pwd)
+        .then(()=>{
+            navigate("/");
         })
         .catch(err=>{
-            console.error(err);
+            toast(err.message);
         })
         
     }

@@ -4,7 +4,7 @@ const SingleCard = ({cardInfo}) => {
     const {estate_title, image, facilities, description, location, area,status, price} = cardInfo;
     return (
         <div>
-            <div className="card w-96 bg-base-100 shadow-xl">
+            <div className="card bg-base-100 shadow-xl">
                 <figure><img src={image} alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">{estate_title}</h2>

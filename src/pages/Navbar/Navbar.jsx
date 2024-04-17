@@ -1,14 +1,30 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "../../App.css"
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Navbar = () => {
+    const {user, logOut} = useContext(AuthContext);
+    const navigate = useNavigate()
+    const handleLogOut= ()=>{
+        logOut()
+        .then(()=>{
+            navigate("/login");
+        })
+        .catch(err=>{
+            console.error(err);
+        })
+    }
+
     const navlist = 
     <>
         <NavLink to="/" className="p-2">Home</NavLink>
-        <NavLink to="/update" className="p-2">Update Profile</NavLink>
-        <NavLink to="/userprofile" className="p-2">User Profile</NavLink>
-        <NavLink to="/login" className="p-2">Log In</NavLink>
-        <NavLink to="/signUp" className="p-2">Sign Up</NavLink>
+        {
+            user ? 
+            <button onClick={handleLogOut} className="p-2">Log Out</button>
+            :
+            <NavLink to="/login" className="p-2">Log In</NavLink>
+        }
     </>
     return (
         <div className="bg-base-100">
