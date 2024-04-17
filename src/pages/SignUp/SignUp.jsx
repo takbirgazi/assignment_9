@@ -31,8 +31,8 @@ const SignUp = () => {
 
         createUserWithEmailAndPassword(auth, email, password)
         .then(result =>{
-            const url = result.user.photoURL=photoUrl;
-            console.log(url);
+            result.user.photoURL=photoUrl;
+            // console.log(result.user);
             setSuccMsg("Account Created Successfully!");
             toast("Account Created Successfully!");
         })

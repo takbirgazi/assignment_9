@@ -1,0 +1,50 @@
+[
+    {
+    "id": 1,
+    "estate_title": "Luxurious Villa with Stunning Views",
+    "segment_name": "Residential",
+    "description": "Experience luxury living in this spacious villa with breathtaking views of the surrounding landscape. The villa features modern amenities and high-end finishes throughout.",
+    "price": "$1,500,000",
+    "status": "sale",
+    "area": "5000 sq ft",
+    "location": "Prime Location, Dhaka",
+    "facilities": ["Living Room", "Swimming Pool", "Gourmet Kitchen"],
+    "image": "https://i.ibb.co/WWGqhV4/slider1.jpg"
+  },
+  {
+    "id": 2,
+    "estate_title": "City Center Apartment",
+    "segment_name": "Residential",
+    "description": "Conveniently located in the heart of the city, this modern apartment offers urban living at its finest. Enjoy easy access to shopping, dining, and entertainment.",
+    "price": "$2,500 (per month)",
+    "status": "rent",
+    "area": "1200 sq ft",
+    "location": "City Center, Dhaka",
+    "facilities": ["Spacious Bedroom", "Fitness Center", "24/7 Security"],
+    "image": "https://i.ibb.co/PN7NcGx/slider2.jpg"
+  },
+  {
+    "id": 3,
+    "estate_title": "Commercial Office Space",
+    "segment_name": "Commercial",
+    "description": "This prime office space offers a professional environment for businesses to thrive. Ideal for startups, freelancers, and established companies looking for a central location.",
+    "price": "$3,000 (per month)",
+    "status": "rent",
+    "area": "3000 sq ft",
+    "location": "Business District, Dhaka",
+    "facilities": ["Conference Rooms", "High-Speed Internet", "Parking"],
+    "image": "https://i.ibb.co/Gkhf51q/slider3.jpg"
+  },
+  {
+    "id": 4,
+    "estate_title": "Seaside Vacation Home",
+    "segment_name": "Vacation",
+    "description": "Escape to this charming seaside retreat for a relaxing getaway. Enjoy stunning ocean views, private beach access, and all the comforts of home.",
+    "price": "$300 (per night)",
+    "status": "rent",
+    "area": "1500 sq ft",
+    "location": "Coastal Area, Cox's Bazar",
+    "facilities": ["Oceanfront Patio", "BBQ Grill", "Beach Chairs"],
+    "image": "https://i.ibb.co/W5P0Gmm/slider4.jpg"
+  }
+]

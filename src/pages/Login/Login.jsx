@@ -1,15 +1,23 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
+import { GoogleAuthProvider, GithubAuthProvider, signInWithEmailAndPassword} from "firebase/auth";
 import {signInWithPopup} from "firebase/auth";
 import auth from "../../firebase/firebase.config";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
+import { FaRegEye, FaEyeSlash } from "react-icons/fa";
+import { useState } from "react";
 
 const Login = () => {
     
     const providerGoogle = new GoogleAuthProvider();
     const providerGit = new GithubAuthProvider();
+    const [showPwd, setShowPwd] = useState(false);
+
+    const eyeHandler =()=>{
+        setShowPwd(!showPwd);
+    }
     
     const signInWithGoogleHandler =()=>{
         signInWithPopup(auth,providerGoogle)
@@ -32,6 +40,20 @@ const Login = () => {
             toast(err.message);
         })
     }
+
+    const logInWithEmPwd = event =>{
+        event.preventDefault();
+        const email = event.target.email.value;
+        const pwd = event.target.password.value;
+        signInWithEmailAndPassword(auth, email,pwd)
+        .then(res =>{
+            console.log(res);
+        })
+        .catch(err=>{
+            console.error(err);
+        })
+        
+    }
     return (
         <div>
             <Helmet>
@@ -40,12 +62,17 @@ const Login = () => {
             <div className="flex items-center justify-center lg:w-1/2 md:w-4/5 w-full mx-auto p-2">
                 <div className="bg-white shadow-sm rounded-md p-4 w-full mx-auto">
                     <h2 className="font-bold text-xl text-center">Log In</h2>
-                    <form action="" className="flex gap-5 flex-col pt-10">
+                    <form onSubmit={logInWithEmPwd} className="flex gap-5 flex-col pt-10">
                         <div className="flex items-center justify-center">
-                            <input className="border rounded-sm p-2 lg:w-1/2 w-full mx-auto" type="email" placeholder="Write Your Email"/>
+                            <input name="email" className="border rounded-sm p-2 lg:w-1/2 w-full mx-auto" type="email" placeholder="Write Your Email"/>
                         </div>
                         <div className="flex items-center justify-center">
-                            <input className="border rounded-sm p-2 lg:w-1/2 w-full mx-auto" type="password" placeholder="Write Your Password"/>
+                            <div className="relative flex flex-col lg:w-1/2 w-full mx-auto">
+                                <input name="password" className="border rounded-sm p-2" type={showPwd ? "text" : "password"}placeholder="Your Password" required/>
+                                <span onClick={eyeHandler} className="absolute right-2 top-3 cursor-pointer">
+                                    {showPwd ? <FaEyeSlash /> : <FaRegEye />}
+                                </span>
+                            </div>
                         </div>
                         <div className="flex items-center justify-center">
                             <input className="border bg-blue-500 text-white rounded-sm p-2 lg:w-1/2 w-full mx-auto cursor-pointer" type="submit" value="Log In"/>

@@ -20,6 +20,7 @@
 * react-helmet
 * react-toastify
 * react-icons
+* prop-types
 
 
 **Name Of Implement Packages**
