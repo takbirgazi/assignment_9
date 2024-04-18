@@ -15,7 +15,6 @@ const Navbar = () => {
             console.error(err);
         })
     }
-
     const navlist = 
     <>
         <NavLink to="/" className="p-2">Home</NavLink>
@@ -23,7 +22,10 @@ const Navbar = () => {
             user ? 
             <button onClick={handleLogOut} className="p-2">Log Out</button>
             :
-            <NavLink to="/login" className="p-2">Log In</NavLink>
+            <>
+                <NavLink to="/login" className="p-2">Log In</NavLink>
+                <NavLink to="/signup" className="p-2">Sign Up</NavLink>
+            </>
         }
     </>
     return (
@@ -45,11 +47,15 @@ const Navbar = () => {
                         {navlist}
                     </ul>
                 </div>
-                <div className="navbar-end btn-circle avatar" title="Takbir Gazi">
-                    <div className="w-10 rounded-full">
-                    <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                {
+                 user && 
+                    <div className="navbar-end btn-circle avatar" title={user?.displayName}>
+                        <div className="w-10 rounded-full">
+                        <img className="border rounded-full" src={user?.photoURL} />
+                        </div>
                     </div>
-                </div>
+                }
+                
             </div>
         </div>
     );

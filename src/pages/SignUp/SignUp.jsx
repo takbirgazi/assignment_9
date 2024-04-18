@@ -1,11 +1,13 @@
 
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FaRegEye, FaEyeSlash } from "react-icons/fa";
 import { AuthContext } from "../../providers/AuthProvider";
+import { updateProfile } from "firebase/auth";
+import auth from "../../firebase/firebase.config";
 
 
 
@@ -14,6 +16,7 @@ const SignUp = () => {
     const [errMsg, setErrMsg] = useState("");
     const [succMsg, setSuccMsg] = useState("");
     const [showPwd, setShowPwd] = useState(false);
+    const navigate = useNavigate();
 
     const eyeHandler =()=>{
         setShowPwd(!showPwd);
@@ -22,6 +25,8 @@ const SignUp = () => {
         event.preventDefault();
         setErrMsg("");
         setSuccMsg("");
+        const name = event.target.name.value;
+        const photo = event.target.photourl.value;
         const email = event.target.email.value;
         const password = event.target.password.value;
         const photoUrl = event.target.photourl.value;
@@ -33,6 +38,16 @@ const SignUp = () => {
         createUser(email, password)
         .then(result =>{
             result.user.photoURL=photoUrl;
+
+            updateProfile(auth.currentUser,{
+                displayName: name, photoURL: photo
+            })
+            .then(()=>{
+                navigate("/");
+            })
+            .catch(err=>{
+                console.error(err);
+            })
             // console.log(result.user);
             setSuccMsg("Account Created Successfully!");
             toast("Account Created Successfully!");
