@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types'; 
+import { Link } from 'react-router-dom';
 
 const SingleCard = ({cardInfo}) => {
-    const {estate_title, image, facilities, description, location, area,status, price} = cardInfo;
+    const {id, estate_title, image, facilities, description, location, area,status, price} = cardInfo;
     return (
         <div>
             <div className="card bg-base-100 shadow-xl">
@@ -18,7 +19,7 @@ const SingleCard = ({cardInfo}) => {
                         <p className='px-1 py-1 border rounded-md text-center font-bold uppercase'>{status}</p>
                     </div>
                     <p className='text-2xl font-bold'>{price}</p>
-                    <button className='border rounded-md px-2 py-2 font-bold bg-blue-500 text-white'>View Property</button>
+                    <Link to={`/${id}`} className='border rounded-md px-2 py-2 font-bold bg-blue-500 text-white'>View Property</Link>
                 </div>
             </div>
         </div>

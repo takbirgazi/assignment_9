@@ -6,6 +6,7 @@ import Login from '../pages/Login/Login';
 import SignUp from "../pages/SignUp/SignUp";
 import UpdateUser from "../pages/UpdateUser/UpdateUser";
 import PrivateRouts from "./PrivateRouts";
+import SinglePage from "../pages/SinglePage/SinglePage";
 
 const router = createBrowserRouter([
     {
@@ -17,6 +18,11 @@ const router = createBrowserRouter([
                 path: "/",
                 loader: ()=> fetch(`data.json`),
                 element: <Home></Home>,
+            },
+            {
+                path: "/:id",
+                loader: ()=> fetch(`data.json`),
+                element: <SinglePage></SinglePage>,
             },
             {
                 path: "/login",
