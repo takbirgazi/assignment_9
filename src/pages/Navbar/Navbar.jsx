@@ -15,8 +15,6 @@ const Navbar = () => {
             console.error(err);
         })
     }
-
-    console.log(user)
     const navlist = 
     <>
         <NavLink to="/" className="p-2">Home</NavLink>

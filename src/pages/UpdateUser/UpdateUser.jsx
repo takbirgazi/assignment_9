@@ -14,8 +14,7 @@ const UpdateUser = () => {
             displayName: name, 
             photoURL: photo,
         })
-        .then(res=>{
-            console.log(res);
+        .then(()=>{
             toast("Update Successfully");
         })
         .catch(err=>{
