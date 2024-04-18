@@ -15,12 +15,17 @@ const Navbar = () => {
             console.error(err);
         })
     }
+
+    console.log(user)
     const navlist = 
     <>
         <NavLink to="/" className="p-2">Home</NavLink>
         {
             user ? 
-            <button onClick={handleLogOut} className="p-2">Log Out</button>
+            <>
+                <NavLink to="/update" className="p-2">Update Profile</NavLink>
+                <button onClick={handleLogOut} className="p-2">Log Out</button>
+            </>
             :
             <>
                 <NavLink to="/login" className="p-2">Log In</NavLink>
